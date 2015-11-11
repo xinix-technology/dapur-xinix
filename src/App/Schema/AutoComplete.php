@@ -23,7 +23,6 @@ class AutoComplete extends NormArray
     {
         if (is_array($data_sources)) {
             $this->flag = 1;
-
             $data_sources = json_encode($data_sources);
         } else {
             $this->flag = 2;

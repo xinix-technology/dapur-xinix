@@ -64,6 +64,7 @@ return array(
                 '/user' => null,
                 '/autocomplete' => null,
                 '/wysiwyg' => null
+                '/referencegroup' => null
             ),
         ),
         // uncomment below to enable auth
