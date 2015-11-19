@@ -63,7 +63,7 @@ return array(
             'mapping' => array(
                 '/user' => null,
                 '/autocomplete' => null,
-                '/wysiwyg' => null
+                '/wysiwyg' => null,
                 '/referencegroup' => null
             ),
         ),
