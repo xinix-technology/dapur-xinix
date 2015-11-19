@@ -12,7 +12,7 @@ class AppProvider extends \Bono\Provider\Provider
         $app = $this->app;
 
         $app->get('/test/:id', function ($id) use ($app) {
-        	
+
         		var_dump(Currency::terbilang_en($id) );
         		
 
