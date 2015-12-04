@@ -62,6 +62,7 @@ return array(
             'default' => 'Norm\\Controller\\NormController',
             'mapping' => array(
                 '/user' => null,
+                '/multiple_select' => null,
                 '/autocomplete' => null,
                 '/wysiwyg' => null,
                 '/referencegroup' => null
