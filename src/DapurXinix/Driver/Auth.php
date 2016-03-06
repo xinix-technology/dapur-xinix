@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Driver;
+namespace Dapurxinix\Driver;
 
 use ROH\BonoAuth\Driver\NormAuth;
 

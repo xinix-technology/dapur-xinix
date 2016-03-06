@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Schema;
+namespace Dapurxinix\Schema;
 
 use \Norm\Schema\Field;
 use \Bono\Helper\URL;

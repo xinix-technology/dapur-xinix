@@ -1,6 +1,6 @@
 <?php 
 
-namespace App\Library;
+namespace Dapurxinix\Library;
 
 
 class Currency {

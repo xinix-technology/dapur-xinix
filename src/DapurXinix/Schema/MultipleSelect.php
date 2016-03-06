@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Schema;
+namespace Dapurxinix\Schema;
 
-use Norm\Schema\Field;
+use Norm\Schema\NormArray;
 use Norm\Norm;
 use Bono\Helper\URL;
 
-class AutoComplete extends Field
+class MultipleSelect extends NormArray
 {
     public function from($data_sources)
     {
@@ -46,8 +46,8 @@ class AutoComplete extends Field
     {
         $data_sources = $this->normalizeData($this->get('data_sources'));
 
-        return $this->render('_schema/autocomplete/input', array(
-            'self' => $this,
+        return $this->render('_schema/multipleselect/input', array(
+            'name' => $this->get('name'),
             'value' => $value,
             'entry' => $entry,
             'data_sources' => $data_sources,
@@ -59,6 +59,14 @@ class AutoComplete extends Field
 
     public function formatReadonly($value, $entry = null)
     {
-        return "<span class=\"field\">".($this->formatPlain($value, $entry) ?: '&nbsp;')."</span>";
+        $html = "<span class=\"field\">\n";
+        if (!empty($value)) {
+            foreach ($value as $key => $v) {
+                $html .= '<code>'.$v."</code>\n";
+            }
+        }
+        $html .= "</span>\n";
+
+        return $html;
     }
 }

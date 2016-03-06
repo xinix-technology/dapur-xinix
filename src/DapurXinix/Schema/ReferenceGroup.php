@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Schema;
+namespace Dapurxinix\Schema;
 
 use Norm\Schema\Reference;
 use Norm\Norm;
