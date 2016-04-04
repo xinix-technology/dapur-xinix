@@ -22,7 +22,7 @@ class MultipleSelect extends NormArray
     public function normalizeData($data_sources)
     {
         if (is_array($data_sources)) {
-            if (is_array($data_sources[0])) {
+            if (is_array(reset($data_sources))) {
                 $this->flag = 3;
             } else {
                 $this->flag = 1;

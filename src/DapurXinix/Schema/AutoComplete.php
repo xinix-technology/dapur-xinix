@@ -2,63 +2,60 @@
 
 namespace Dapurxinix\Schema;
 
-use Norm\Schema\Field;
+use Norm\Schema\Reference;
 use Norm\Norm;
 use Bono\Helper\URL;
 
-class AutoComplete extends Field
+class AutoComplete extends Reference
 {
-    public function from($data_sources)
-    {
-        if (is_callable($data_sources)) {
-            $this->set('data_sources', call_user_func($data_sources));
-        } else {
-            $this->set('data_sources', $data_sources);
-        }
+   
 
-        return $this;
-    }
-
-    public function normalizeData($data_sources)
+    public function normalizeData()
     {
-        if (is_array($data_sources)) {
-            if (is_array($data_sources[0])) {
-                $this->flag = 3;
-            } else {
-                $this->flag = 1;
+        if (!is_string($this['foreign'])) {
+            $this->flag = 1;
+            $data = array();
+
+            foreach ($this['foreign'] as $key => $value) {
+                $data[] = array('label' => $value,'value'=>$key);
             }
 
-            $data_sources = json_encode($data_sources);
+            $data_sources = json_encode($data);
         } else {
             $this->flag = 2;
-            $this->key  = $this->get('key');
-            $this->val  = $this->get('val');
-
-            if (!filter_var($data_sources, FILTER_VALIDATE_URL)) {
-                $data_sources = URL::site($data_sources);
-            }
+            $data_sources = URL::site(strtolower($this['foreign']).'.json');
+            
         }
 
         return $data_sources;
     }
 
+    public function rowData($value){
+
+        if (!is_string($this['foreign'])) {
+            return val($this['foreign']) ?: array();
+        }
+
+        $model = Norm::factory($this['foreign'])->findOne(array($this['foreignKey'] => $value));
+        if(!$model){
+            return array();
+        }
+        return $model;
+
+    }
+
+    
+
     public function formatInput($value, $entry = null)
     {
         $data_sources = $this->normalizeData($this->get('data_sources'));
-
+        
         return $this->render('_schema/autocomplete/input', array(
             'self' => $this,
             'value' => $value,
             'entry' => $entry,
             'data_sources' => $data_sources,
             'flag' => $this->flag,
-            'key' => isset($this->key) ? $this->key : '',
-            'val' => isset($this->val) ? $this->val : ''
         ));
-    }
-
-    public function formatReadonly($value, $entry = null)
-    {
-        return "<span class=\"field\">".($this->formatPlain($value, $entry) ?: '&nbsp;')."</span>";
     }
 }
