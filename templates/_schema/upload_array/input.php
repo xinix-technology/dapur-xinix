@@ -79,7 +79,6 @@ $(function(){
             	
             },
         }).done(function(result){
-            console.log(result);
             $("#progress-upload-<?php echo $self['name']?>").hide();
             if (input.files && input.files[0]) {
 				$('input[name="<?php echo $self['name']?>"]').val(input.files[0].name);

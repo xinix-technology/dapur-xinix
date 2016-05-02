@@ -30,6 +30,21 @@ class AutoComplete extends Reference
         return $data_sources;
     }
 
+     public function optionLabel($key, $entry)
+    {
+        
+        if (is_scalar($entry)) {
+            $label = $entry;
+        } elseif ($this['foreignLabel'] instanceof \Closure) {
+            $getLabel = $this['foreignLabel'];
+            $label = $getLabel($entry);
+        } else {
+            $label = @$entry[$this['foreignLabel']];
+        }
+
+        return $label;
+    }
+
     public function rowData($value){
 
         if (!is_string($this['foreign'])) {

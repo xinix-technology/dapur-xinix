@@ -31,7 +31,12 @@ class AppProvider extends \Bono\Provider\Provider
     private function uploadFile($app){
 
     	$base_dir  = $this->options['Upload_Directory'];
-		$path = $base_dir . '/';
+        $path = $base_dir . '/';
+        if(!empty($_GET['bucket'])){
+            $path .= $_GET['bucket'] .'/';
+
+        }
+		
 		
 
 		if (!file_exists($path)) {
@@ -44,7 +49,7 @@ class AppProvider extends \Bono\Provider\Provider
 
 		    $upload = move_uploaded_file($tmp_file, $path.$filename);
 
-		    $uploaded = $filename;
+		    $uploaded = array('filename' => $filename,'uri'=>$_GET['bucket'].'/') ;
 		}
 
 		echo json_encode($uploaded);

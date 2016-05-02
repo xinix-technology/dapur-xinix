@@ -2,10 +2,11 @@
     #<?php echo 'display'.$self['name'] ?> { margin-bottom: 10px; display: inline-block; }
     #<?php echo 'display'.$self['name'] ?> div { background-color: #000; padding: 10px; border-radius: 2px; color: #fff; float: left; margin: 0px 5px 5px 0px; }
     #<?php echo 'display'.$self['name'] ?> div span.delete { margin-left: 10px; border: 2px solid #fff; border-radius: 100%; cursor: pointer; width: 20px; height: 20px; line-height: 18px; display: inline-block; text-align: center; }
+    img#loader-<?php echo $self['name'] ?> { position: absolute; margin-top: -27px;right: 16px;display:none;}
 </style>
 
 <input id="<?php echo 'input'.$self['name'] ?>" type="text"  value="<?php echo $self->optionLabel($self['foreignLabel'],$self->rowData($value)) ?>" placeholder="<?php echo ucfirst(str_replace('_', ' ', $self['name'])) ?>">
-<div id="<?php echo 'display'.$self['name'] ?>"></div>
+<img id="loader-<?php echo $self['name'] ?>" src="<? echo Theme::base('img/spin.gif') ?>"/>
 <input name="<?php echo $self['name'] ?>" value="<?php echo $value ?>" id="<?php echo 'real-'.$self['name'] ?>" type="hidden">
 
 <script type="text/javascript">
@@ -17,7 +18,9 @@
                 data = JSON.parse(data);
 
                 var matches = $.map(data, function (acItem) {
-                    if (acItem.label.toUpperCase().indexOf(request.term.toUpperCase()) === 0) {
+                    var regexp =  new RegExp('.*'+request.term.toUpperCase()+'.*')
+                        
+                    if (regexp.test(acItem.label.toUpperCase())) {
                         return {
                             label: acItem.label,
                             value: acItem.value
@@ -26,6 +29,7 @@
                 });
                 response(matches);
             <?php else: ?>
+            $('#loader-<?php echo $self['name'] ?>').show();
                 $.ajax({
                     url: '<?php echo $data_sources ?>',
                     data: { '<?php echo $self['foreignLabel']."!like" ?>': request.term },
@@ -39,6 +43,8 @@
                                 value: item.<?php echo $self['foreignKey'] ?>
                             }
                         }));
+
+                        $('#loader-<?php echo $self['name'] ?>').hide();
                     },
                     error: function () {
                         response([]);
@@ -49,9 +55,7 @@
         select: function(event, ui) {
             ui.item['val'] = ui.item['value'];
             ui.item['value'] = ui.item['label'];
-            console.log(ui.item['value']);
-            console.log(ui.item['val']);
-
+            
             $("#<?php echo 'real-'.$self['name'] ?>").val(ui.item['val']);
         },
 
