@@ -65,7 +65,7 @@ return array(
                 '/multiple_select' => null,
                 '/autocomplete' => null,
                 '/wysiwyg' => null,
-                '/referencegroup' => null
+                '/datepicker' => null
             ),
         ),
         // uncomment below to enable auth

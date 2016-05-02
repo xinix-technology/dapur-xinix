@@ -1,9 +1,20 @@
-<span class='st_facebook_large' displayText='Facebook'></span>
-<span class='st_googleplus_large' displayText='Google +'></span>
-<span class='st_twitter_large' displayText='Tweet'></span>
-<span class='st_instagram_large' displayText='Instagram Badge' st_username='apriantopramana'></span>
-<span class='st_email_large' displayText='Email'></span>
+<div class="float-menu">
+<h2>Modules</h2>
+<?php $modules = f('app')->config('bono.middlewares')['Bono\Middleware\ControllerMiddleware']['mapping'] ?>
+    <?php foreach($modules as $module => $v): ?>
+    <a href="<?php echo URL::site($module) ?>">
+        <?php echo $module ?>
+    </a>
+    <?php endforeach ?>
+</div>
 
-<script type="text/javascript">var switchTo5x=true;</script>
-<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
-<script type="text/javascript">stLight.options({publisher: "9e56a13f-832b-45e9-bfc5-33241cf0a432", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
+<h2>Hello Team!</h2>
+
+<p>
+    Ini adalah kumpulan schema yang bisa kalian gunakan pada saat mengerjakan projek. Apabila masih ada kekurangan dan butuh penambahan fitur, kalian bisa menghubungi Divisi Informasional. Disini sudah disediakan contoh dan cara pengunaannya. Semoga Bermanfaat :)
+</p>
+
+<p>
+    Best regards,<br>
+    Division IT Informational
+</p>
