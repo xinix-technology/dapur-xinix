@@ -59,8 +59,17 @@
             $("#<?php echo 'real-'.$self['name'] ?>").val(ui.item['val']);
         },
 
+        select: function(event, ui) {
+            ui.item['value'] = ui.item['label'];
+        },
+
         focus: function(event, ui){
             return false;
+
+        },
+        response: function(event, ui) {
+            var val = ui.content[0]['value'];
+            $("#<?php echo 'input'.$self['name'].'a' ?>").val(val);
         }
     });
 

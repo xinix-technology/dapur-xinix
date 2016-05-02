@@ -18,20 +18,31 @@ return array(
             return $data;
         }),
         'array_dimention2' => AutoComplete::create('array_dimention2')->from(function () {
-            $data = array(
-                array(
-                    'value' => 1,
-                    'label' => 'Putra'
-                ),
-                array(
-                    'value' => 2,
-                    'label' => 'Ali'
-                ),
-                array(
-                    'value' => 3,
-                    'label' => 'Ahmad'
-                )
-            );
+            $users = Norm::factory('User')->find();
+
+            $data = array();
+            foreach ($users as $key => $user) {
+                $data[] = array(
+                    'value' => $user['$id'],
+                    'label' => $user['username']
+                );
+            }
+
+
+            // $data = array(
+            //     array(
+            //         'value' => 1,
+            //         'label' => 'Putra'
+            //     ),
+            //     array(
+            //         'value' => 2,
+            //         'label' => 'Ali'
+            //     ),
+            //     array(
+            //         'value' => 3,
+            //         'label' => 'Ahmad'
+            //     )
+            // );
 
             return $data;
         })
