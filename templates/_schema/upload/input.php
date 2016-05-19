@@ -38,10 +38,6 @@ $(function(){
         var that = this;
         var prefixs = '<?php echo $url ?>';
 
-        console.log('testing');
-
-        
-
         if (input.files && input.files[0]) {
         	data.append('files[]', input.files[0]);
         }else{
