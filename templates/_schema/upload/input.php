@@ -22,7 +22,7 @@
 	<span class="progress-value">0%</span>
 </div>
 
-<input type="file" id="<?php echo $self['name']?>"  style="display:none"/>
+<input type="file" id="<?php echo $self['name']?>"  style="display:none" multiple/>
 <script type="text/javascript">
 $(function(){
 	$("#upload-file-<?php echo $self['name']?>").on('click',function(e){
@@ -37,9 +37,12 @@ $(function(){
         var name = this.name;
         var that = this;
         var prefixs = '<?php echo $url ?>';
-
-        if (input.files && input.files[0]) {
-        	data.append('files[]', input.files[0]);
+        
+        
+        if (input.files.length > 0 ) {
+            for (var i = 0; i < input.files.length; i++) {
+                data.append('files[]', input.files[i]);
+            };
         }else{
         	return;
         }

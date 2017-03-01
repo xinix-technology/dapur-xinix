@@ -31,9 +31,12 @@ class AppProvider extends \Bono\Provider\Provider
     private function uploadFile($app){
 
     	$base_dir  = $this->options['Upload_Directory'];
+        $bucket = $this->options['bucket'];
         $path = $base_dir . '/';
+
         if(!empty($_GET['bucket'])){
             $path .= $_GET['bucket'] .'/';
+            $bucket = $_GET['bucket'];
 
         }
 		
@@ -44,12 +47,13 @@ class AppProvider extends \Bono\Provider\Provider
 		}
 
 		$uploaded = '';
+        
 		foreach ($_FILES['files']['name'] as $k => $filename) {
 			$tmp_file = $_FILES['files']['tmp_name'][$k];
 
 		    $upload = move_uploaded_file($tmp_file, $path.$filename);
 
-		    $uploaded = array('filename' => $filename,'uri'=>$_GET['bucket'].'/') ;
+		    $uploaded = array('filename' => $filename,'uri'=>$bucket.'/') ;
 		}
 
 		echo json_encode($uploaded);
