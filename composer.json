@@ -1,6 +1,6 @@
 {
     "name": "xinix-technology/dapur-xinix",
-    "description": "Bono Archetype",
+    "description": "Xinix Component",
     "license": "MIT",
     "authors": [
         {
@@ -11,8 +11,7 @@
     "require": {
         "xinix-technology/bono": "1.0.0",
         "xinix-technology/norm": "1.0.0",
-        "xinix-technology/migrate": "~0.1.0",
-        "xinix-technology/bono-auth": "~1.0.0",
+        "xinix-technology/migrate": "~0.1.0",   
         "reekoheek/norm-fdb": "dev-master"
     },
     "autoload": {
