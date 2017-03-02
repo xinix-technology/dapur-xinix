@@ -17,7 +17,7 @@
     "require": {
         "xinix-technology/bono": "1.0.0",
         "xinix-technology/norm": "1.0.0",
-        "xinix-technology/migrate": "~0.1.0",
+        "xinix-technology/migrate": "~0.1.0",   
         "reekoheek/norm-fdb": "dev-master"
     },
     "autoload": {
