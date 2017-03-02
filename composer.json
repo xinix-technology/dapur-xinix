@@ -1,11 +1,11 @@
 {
-    "name": "xinix-technology/bono-arch",
-    "description": "Bono Archetype",
+    "name": "xinix-technology/dapur-xinix",
+    "description": "Xinix Component",
     "license": "MIT",
     "authors": [
         {
-            "name": "Ganesha",
-            "email": "reekoheek@gmail.com"
+            "name": "Januar Siregar",
+            "email": "januar.siregar@gmail.com"
         }
     ],
     "repositories": [
@@ -18,7 +18,6 @@
         "xinix-technology/bono": "1.0.0",
         "xinix-technology/norm": "1.0.0",
         "xinix-technology/migrate": "~0.1.0",
-        "xinix-technology/bono-auth": "~1.0.0",
         "reekoheek/norm-fdb": "dev-master"
     },
     "autoload": {
