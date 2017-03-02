@@ -1,17 +1,11 @@
 {
-    "name": "xinix-technology/bono-arch",
+    "name": "xinix-technology/dapur-xinix",
     "description": "Bono Archetype",
     "license": "MIT",
     "authors": [
         {
-            "name": "Ganesha",
-            "email": "reekoheek@gmail.com"
-        }
-    ],
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/apriantopramana/bono-auth"
+            "name": "Januar Siregar",
+            "email": "januar.siregar@gmail.com"
         }
     ],
     "require": {
