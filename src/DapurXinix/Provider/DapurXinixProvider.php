@@ -4,7 +4,7 @@ namespace Dapurxinix\Provider;
 
 
 
-class AppProvider extends \Bono\Provider\Provider
+class DapurXinixProvider extends \Bono\Provider\Provider
 {
     public function initialize()
     {
