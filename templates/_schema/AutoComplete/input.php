@@ -59,10 +59,6 @@
             $("#<?php echo 'real-'.$self['name'] ?>").val(ui.item['val']);
         },
 
-        select: function(event, ui) {
-            ui.item['value'] = ui.item['label'];
-        },
-
         focus: function(event, ui){
             return false;
 

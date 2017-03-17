@@ -38,7 +38,7 @@ class AutoComplete extends Reference
         } elseif ($this['foreignLabel'] instanceof \Closure) {
             $getLabel = $this['foreignLabel'];
             $label = $getLabel($entry);
-        } else {
+        }else {
             $label = @$entry[$this['foreignLabel']];
         }
 
@@ -48,9 +48,14 @@ class AutoComplete extends Reference
     public function rowData($value){
 
         if (!is_string($this['foreign'])) {
-            return val($this['foreign']) ?: array();
+            if(val($this['foreign'])){
+                $entry = $this['foreign'][$value];
+            }else{
+                $entry = array();
+            }
+            return $entry;
         }
-
+        
         $model = Norm::factory($this['foreign'])->findOne(array($this['foreignKey'] => $value));
         if(!$model){
             return array();
