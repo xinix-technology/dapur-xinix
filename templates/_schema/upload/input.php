@@ -36,7 +36,7 @@ $(function(){
         var data = new FormData();
         var name = this.name;
         var that = this;
-        var prefixs = '<?php echo $url ?>';
+        var prefixs = '<?php echo $url."?bucket=". $self["bucket"] ?>';
         
         
         if (input.files.length > 0 ) {

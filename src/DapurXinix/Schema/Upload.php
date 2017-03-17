@@ -24,7 +24,11 @@ class Upload extends Field{
     }
 
     public function formatReadonly($value, $entry = null)
-    {
-        return "<a target='_BLANK' href='".URL::base('data/'.$value)."'><span class=\"field\">".($this->formatPlain($value, $entry) ?: '&nbsp;')."</span></a>";
+    {   
+        $path= "data";
+        if(empty($this['bucket'])){
+            $path = $this['bucket']; 
+        }
+        return "<a target='_BLANK' href='".URL::base($path.'/'.$value)."'><span class=\"field\">".($this->formatPlain($value, $entry) ?: '&nbsp;')."</span></a>";
     }
 }

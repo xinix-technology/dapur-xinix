@@ -31,13 +31,12 @@ class DapurXinixProvider extends \Bono\Provider\Provider
     private function uploadFile($app){
 
     	$base_dir  = $this->options['Upload_Directory'];
-        $bucket = $this->options['bucket'];
+        $bucket = "";
         $path = $base_dir . '/';
 
         if(!empty($_GET['bucket'])){
             $path .= $_GET['bucket'] .'/';
-            $bucket = $_GET['bucket'];
-
+            $bucket = $_GET['bucket'].'/';
         }
 		
 		
@@ -53,7 +52,7 @@ class DapurXinixProvider extends \Bono\Provider\Provider
 
 		    $upload = move_uploaded_file($tmp_file, $path.$filename);
 
-		    $uploaded = array('filename' => $filename,'uri'=>$bucket.'/') ;
+		    $uploaded = array('filename' => $filename,'path'=>$bucket) ;
 		}
 
 		echo json_encode($uploaded);
