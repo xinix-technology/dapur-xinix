@@ -15,7 +15,7 @@
 
 </style>
 
-<input type="text" value="<?php $value ?>" name="<?php echo $self['name']?>" placeholder="<?php echo l($self['label']) ?>" autocomplete="off" style="display:block;padding-right:30px" readonly/>
+<input type="text" value="<?php echo $value ?>" name="<?php echo $self['name']?>" placeholder="<?php echo l($self['label']) ?>" autocomplete="off" style="display:block;padding-right:30px" readonly/>
 <span id="upload-file-<?php echo $self['name']?>" class="xn xn-upload"  href-target="<?php echo $self['name']?>"></span>
 <div id="progress-upload-<?php echo $self['name']?>">
 	<progress value="0" max="100"></progress>
