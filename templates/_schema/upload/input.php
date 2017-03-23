@@ -22,7 +22,7 @@
 	<span class="progress-value">0%</span>
 </div>
 
-<input type="file" id="<?php echo $self['name']?>"  style="display:none" multiple/>
+<input type="file" id="<?php echo $self['name']?>"  style="display:none" />
 <script type="text/javascript">
 $(function(){
 	$("#upload-file-<?php echo $self['name']?>").on('click',function(e){
@@ -30,18 +30,17 @@ $(function(){
 
 	});
 	$('#<?php echo $self['name']?>').on('change',function(){
-		var input = this;
-
-		// var selector = this.querySelector('input[type="file"]');
+		var input = $(this).get(0).files;
+        // var selector = this.querySelector('input[type="file"]');
         var data = new FormData();
         var name = this.name;
         var that = this;
-        var prefixs = '<?php echo $url."?bucket=". $self["bucket"] ?>';
+        var prefixs = '<?php echo $url.".json?bucket=". $self["bucket"] ?>';
         
         
-        if (input.files.length > 0 ) {
-            for (var i = 0; i < input.files.length; i++) {
-                data.append('files[]', input.files[i]);
+        if (input.length > 0 ) {
+            for (var i = 0; i < input.length; i++) {
+                data.append(input[i].name, input[i]);
             };
         }else{
         	return;
@@ -78,11 +77,12 @@ $(function(){
             	
             },
         }).done(function(result){
+            console.log('testing');
             console.log(result);
             $("#progress-upload-<?php echo $self['name']?>").hide();
-            if (input.files && input.files[0]) {
-				$('input[name="<?php echo $self['name']?>"]').val(input.files[0].name);
-			}
+            if(result.length > 0){
+                $('input[name="<?php echo $self['name']?>"]').val(result[0].filename);
+            }
 
 
         });

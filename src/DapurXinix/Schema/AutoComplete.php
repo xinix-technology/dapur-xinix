@@ -48,7 +48,7 @@ class AutoComplete extends Reference
     public function rowData($value){
 
         if (!is_string($this['foreign'])) {
-            if(val($this['foreign'])){
+            if(val($this['foreign']) && !is_null($value)){
                 $entry = $this['foreign'][$value];
             }else{
                 $entry = array();

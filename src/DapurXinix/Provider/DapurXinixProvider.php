@@ -45,18 +45,19 @@ class DapurXinixProvider extends \Bono\Provider\Provider
 		    mkdir($path, 0766, true);
 		}
 
-		$uploaded = '';
-        
-		foreach ($_FILES['files']['name'] as $k => $filename) {
-			$tmp_file = $_FILES['files']['tmp_name'][$k];
+		$uploaded = array();
+		foreach ($_FILES as $k => $v) {
+			$tmp_file = $_FILES[$k]['tmp_name'];
 
-		    $upload = move_uploaded_file($tmp_file, $path.$filename);
+		    $upload = move_uploaded_file($tmp_file, $path.$v['name']);
 
-		    $uploaded = array('filename' => $filename,'path'=>$bucket) ;
+		    $uploaded[] = array('filename' => $v['name'],'path'=>$bucket) ;
 		}
 
-		echo json_encode($uploaded);
-		exit();
+        
+        $app->response->data($uploaded);
+
+		
 
     }
 
