@@ -48,10 +48,16 @@ class Tag extends NormArray
     {
         $data_sources = $this->normalizeData($value,$entry);
 
+        if(empty($value)){
+            $value = array();
+        }else{
+            $value = $value->toArray();
+        }
+
         return $this->render('_schema/tag/input', array(
             'self' => $this,
             'name' => $this->get('name'),
-            'value' => $value->toArray(),
+            'value' => $value,
             'entry' => $entry,
             'data_sources' => $data_sources,
             'flag' => $this->flag,
