@@ -7,9 +7,25 @@
 <script type="text/javascript" src="<?php echo Theme::base('vendor/jqwidgets/jqwidgets/jqxlistbox.js') ?>"></script>       
 <script type="text/javascript" src="<?php echo Theme::base('vendor/jqwidgets/jqwidgets/jqxcombobox.js') ?>"></script>       
 
+<style>
+#dropdownlistWrapperjqxComboBox-<?php echo $self["name"]?>{
+	padding: 3px 30px 2px 5px!important;
+ }
+
+ #dropdownlistContentjqxComboBox-<?php echo $self["name"]?>{
+ 	width: 100%!important;
+ 	border-right: none;
+ }
+ #dropdownlistArrowjqxComboBox-<?php echo $self["name"]?>{
+ 	background: none!important;
+ 	left: 94%!important;
+ 	height: 25px!important;
+    width: 28px!important;
+ }
+</style>
 
 <div class="dpx-xinix-tag">
-	<div style="margin-top: 5px;" id='jqxComboBox-<?php echo $self["name"]?>'></div>
+	<div style="border-color: #c6d5e7;" id='jqxComboBox-<?php echo $self["name"]?>'></div>
 	<input type="hidden" name="<?php echo $self['name']?>" id="<?php echo $self['name']?>"/>
 </div>
 
@@ -50,12 +66,12 @@
                  
             	}).then(function(dataAdapter){
             			// Create a jqxComboBox
-                		$("#jqxComboBox-<?php echo $self['name']?>").jqxComboBox({ selectedIndex: 0, source: dataAdapter,multiSelect:true});
+                		$("#jqxComboBox-<?php echo $self['name']?>").jqxComboBox({ selectedIndex: 0, source: dataAdapter,multiSelect:true,width:'100%'});
 
                 		for (var i = 0; i < result.length; i++) {
 							$("#jqxComboBox-<?php echo $self['name']?>").jqxComboBox('selectItem',result[i]);
                 		};
-                		
+
                 		// trigger selection changes.
                 		$("#jqxComboBox-<?php echo $self['name']?>").on('change', function (event) {
                 		    var items = $(this).jqxComboBox('getSelectedItems');
