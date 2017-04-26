@@ -76,11 +76,13 @@
                 		$("#jqxComboBox-<?php echo $self['name']?>").on('change', function (event) {
                 		    var items = $(this).jqxComboBox('getSelectedItems');
 			                var datarray = [];
+			                
 			                for (var i = 0; i < items.length; i++) {
 			                	datarray.push(items[i].value);
 			                };
+
 			                var jsonstring = JSON.stringify(datarray);
-			                console.log(jsonstring);
+			                
 
 			               $('.dpx-xinix-tag #<?php echo $self["name"]?>').val(jsonstring);
 

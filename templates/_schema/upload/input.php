@@ -77,7 +77,7 @@ $(function(){
             	
             },
         }).done(function(result){
-            console.log('testing');
+            
             console.log(result);
             $("#progress-upload-<?php echo $self['name']?>").hide();
             if(result.length > 0){
